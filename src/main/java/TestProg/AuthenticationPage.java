@@ -26,9 +26,9 @@ public class AuthenticationPage {
 
 
 
-//    public AuthenticationPage(WebDriver driver){
-////        this.driver = driver;
-////    }
+    public AuthenticationPage(WebDriver driver){
+        this.driver = driver;
+    }
     private AuthenticationPage(Builder builder) {
         this.driver = builder.driver;
         enterValue(PERS_INF_FIRST_NAME,builder.persInfoFirstName);
@@ -41,6 +41,9 @@ public class AuthenticationPage {
         enterValue(ADDRESS_POSTAL_CODE,builder.AddressPostalCode);
         enterValue(ADDRESS_MOBILR_PHONE,builder.AddressMobilePhone);
         enterValue(ADDRESS_ALIAS_ADDRESS,builder.AddressAliasAddress);
+        enterValue(PERS_INF_FIRST_NAME,builder.persInfoFirstName);
+        enterValue(PERS_INF_LAST_NAME,builder.persInfoLastName);
+        enterValue(PERS_INF_PASSWORD,builder.persInfoPassword);
     }
 
 
@@ -63,9 +66,9 @@ public class AuthenticationPage {
 public  static  class Builder {
     // pers info Parameters
     private final WebDriver driver;
-    private final String persInfoFirstName;
-    private final String persInfoLastName ;
-    private final String persInfoPassword ;
+    private  String persInfoFirstName;
+    private  String persInfoLastName ;
+    private  String persInfoPassword ;
     // al info parameters
     private  String AddressFirstName ;
     private  String AddressLastName ;
@@ -75,13 +78,22 @@ public  static  class Builder {
     private  String AddressMobilePhone;
     private  String AddressAliasAddress;
 
-public  Builder(WebDriver driver, String FirstName, String LastName, String password){
+public  Builder(WebDriver driver){
     this.driver = driver;
-    this.persInfoFirstName=FirstName;
-   this.persInfoLastName=LastName;
-   this.persInfoPassword=password;
-}
 
+}
+    public Builder setpersInfoFirstName(String value){
+        this.persInfoFirstName=value;
+        return this;
+    }
+    public Builder setpersInfoLastName(String value){
+        this.persInfoLastName=value;
+        return this;
+    }
+    public Builder setpersInfoPassword(String value){
+        this.persInfoPassword=value;
+        return this;
+    }
 public Builder setAddressFirstName(String value){
     this.AddressFirstName=value;
     return this;

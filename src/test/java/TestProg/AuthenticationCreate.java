@@ -27,14 +27,7 @@ public class AuthenticationCreate {
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        authPage = new AuthenticationPage.Builder(driver,"PERS_INF_FIRST_NAME", "PERS_INF_LAST_NAME","12345678")
-                .setAddressFirstName("ADDRESS_FIRST_NAMED")
-                .setAddressLastName("ADDRESS_LAST_NAME")
-                .setAddressAdress("64/13, Volodymyrska Street")
-                .setAddressCity("Kyiv")
-                .setAddressPostalCode("01601")
-                .setAddressMobilePhone("+80934655725")
-                .setAddressAliasAddress("64/13, Volodymyrska Street").build();
+        authPage = new AuthenticationPage(driver);
 
     }
 
@@ -48,6 +41,17 @@ public class AuthenticationCreate {
     }
     @Test
     public static void enterPersonalInfo(){
+        authPage = new AuthenticationPage.Builder(driver)
+                .setpersInfoFirstName("PERS_INF_FIRST_NAME")
+                .setpersInfoLastName("PERS_INF_LAST_NAME")
+                .setpersInfoPassword("12345678")
+                .setAddressFirstName("ADDRESS_FIRST_NAMED")
+                .setAddressLastName("ADDRESS_LAST_NAME")
+                .setAddressAdress("64/13, Volodymyrska Street")
+                .setAddressCity("Kyiv")
+                .setAddressPostalCode("01601")
+                .setAddressMobilePhone("+80934655725")
+                .setAddressAliasAddress("64/13, Volodymyrska Street").build();
 //        authPage.enterValue(PERS_INF_FIRST_NAME,"PERS_INF_FIRST_NAME")
 //                .enterValue(PERS_INF_LAST_NAME,"PERS_INF_LAST_NAME")
 //                .enterValue(PERS_INF_PASSWORD,"12345678")
